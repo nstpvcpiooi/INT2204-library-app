@@ -3,6 +3,8 @@ module com.example.demo {
     requires javafx.fxml;
 
 
-    opens com.example.demo to javafx.fxml;
-    exports com.example.demo;
+    opens Library.ui to javafx.fxml;
+    exports Library.ui;
+    exports Library;
+    opens Library to javafx.fxml;
 }

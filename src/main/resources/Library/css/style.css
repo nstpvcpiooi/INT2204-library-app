@@ -1,0 +1,46 @@
+#sidepane {
+    -fx-background-color: #fbdacf;
+}
+
+#ContentPane {
+    -fx-background-color: #ffffff;
+}
+
+.MenuButton {
+    -fx-font-family: Barlow;
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
+    -fx-cursor: hand;
+}
+
+.MenuButtonPressed {
+    -fx-background-color: #fdcbbb;
+    -fx-font-family: Barlow;
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
+    -fx-cursor: hand;
+}
+
+
+.MenuButton:hover {
+    -fx-background-color: #fdcbbb;
+
+}
+
+#userName {
+    -fx-font-family: "Barlow Medium";
+    -fx-font-size: 13;
+}
+
+#profileButton {
+    -fx-background-color: rgba(255, 255, 255, 0.27);
+    -fx-background-radius: 10px;
+    -fx-font-family: Barlow;
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
+    -fx-cursor: hand;
+}
+
+#profileButton .VBox {
+    -fx-background-color: white;
+}
