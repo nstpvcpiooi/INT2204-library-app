@@ -1,4 +1,4 @@
-module com.example.demo {
+module libraryapp {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -7,4 +7,8 @@ module com.example.demo {
     exports Library.ui;
     exports Library;
     opens Library to javafx.fxml;
+    exports Library.ui.User;
+    opens Library.ui.User to javafx.fxml;
+    exports Library.ui.Admin;
+    opens Library.ui.Admin to javafx.fxml;
 }
