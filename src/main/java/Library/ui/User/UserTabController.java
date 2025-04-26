@@ -1,8 +1,6 @@
-package Library.ui;
+package Library.ui.User;
 
-import Library.ui.User.UserMainController;
-
-public abstract class TabController {
+public abstract class UserTabController {
     private UserMainController userMainController;
 
     public UserMainController getMainController() {

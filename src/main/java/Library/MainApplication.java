@@ -20,22 +20,22 @@ public class MainApplication extends Application {
         /**
          * GIAO DIỆN CHÍNH CỦA NGƯỜI DÙNG
          */
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fxml/UserMainView.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
-
-        stage.setTitle("Library App - User");
-        stage.setScene(scene);
+//        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fxml/UserMainView.fxml"));
+//        Parent root = fxmlLoader.load();
+//        Scene scene = new Scene(root);
+//
+//        stage.setTitle("Library App - User");
+//        stage.setScene(scene);
 
         /**
          * GIAO DIỆN CHÍNH CỦA ADMIN
          */
-//        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fxml/AdminMainView.fxml"));
-//        Parent root = fxmlLoader.load();
-//        Scene scene = new Scene(root);
-//
-//        stage.setTitle("Library App - Admin");
-//        stage.setScene(scene);
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fxml/AdminMainView.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Library App - Admin");
+        stage.setScene(scene);
 
         // Start the overdue handler thread
 //        overdueRequestHandler = new OverdueRequestHandler();

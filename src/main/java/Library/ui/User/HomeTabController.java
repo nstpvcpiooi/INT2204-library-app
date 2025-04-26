@@ -1,13 +1,12 @@
 package Library.ui.User;
 
-import Library.ui.TabController;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class HomeTabController extends TabController {
+public class HomeTabController extends UserTabController {
 
     @FXML
     private ListView<?> RecommendationList;

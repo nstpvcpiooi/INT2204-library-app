@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="950.0" stylesheets="@../../css/table-view.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Library.ui.Admin.RequestManageController">
+   <children>
+      <Label layoutX="42.0" layoutY="42.0" text="QUẢN LÝ TRẢ SÁCH" textFill="#e89e5f">
+         <font>
+            <Font name="Barlow ExtraBold" size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table" layoutX="42.0" layoutY="89.0" onMouseClicked="#selectItem" prefHeight="533.0" prefWidth="865.0">
+         <columns>
+            <TableColumn fx:id="requestID" prefWidth="37.0" text="STT" />
+            <TableColumn fx:id="memberID" minWidth="0.0" prefWidth="44.0" text="ID" />
+            <TableColumn fx:id="BookID" prefWidth="218.0" text="Tên Sách" />
+            <TableColumn fx:id="IssueDate" prefWidth="112.0" text="Mượn" />
+            <TableColumn fx:id="DueDate" prefWidth="98.0" text="Hạn" />
+            <TableColumn fx:id="ReturnDate" prefWidth="101.0" text="Trả" />
+            <TableColumn fx:id="Overdue" prefWidth="79.0" text="Quá hạn" />
+            <TableColumn fx:id="Status" prefWidth="175.0" text="Trạng thái" />
+         </columns>
+      </TableView>
+      <HBox alignment="CENTER_RIGHT" layoutX="41.0" layoutY="622.0" prefHeight="66.0" prefWidth="865.0" spacing="15.0">
+         <children>
+            <Button fx:id="approveButton" alignment="CENTER" graphicTextGap="7.0" mnemonicParsing="false" onAction="#approve" opacity="0.9" prefHeight="36.0" prefWidth="150.0" stylesheets="@../../css/popup.css" text="CHẤP NHẬN">
+               <graphic>
+                  <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icon/check.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+
+</AnchorPane>
