@@ -1,12 +1,13 @@
 package Library.ui.User;
 
+import Library.ui.TabController;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class HomeTabController {
+public class HomeTabController extends TabController {
 
     @FXML
     private ListView<?> RecommendationList;
@@ -16,16 +17,6 @@ public class HomeTabController {
 
     @FXML
     private VBox welcomeBox;
-
-    private UserMainController userMainController;
-
-    public UserMainController getMainController() {
-        return userMainController;
-    }
-
-    public void setMainController(UserMainController userMainController) {
-        this.userMainController = userMainController;
-    }
 
     @FXML
     void SearchButtonClicked(MouseEvent event) {
