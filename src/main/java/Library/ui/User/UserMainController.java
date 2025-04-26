@@ -1,12 +1,18 @@
 package Library.ui.User;
 
+import Library.MainApplication;
+import Library.ui.MainController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-public class UserMainController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class UserMainController extends MainController {
 
     @FXML
     private AnchorPane ContentPane;
@@ -28,5 +34,44 @@ public class UserMainController {
 
     @FXML
     private Label userName;
+
+    /** Home Tab */
+    public HomeTabController homeTabController;
+    public AnchorPane homeTab;
+
+    /**
+     * Khởi tạo giao diện chính của ứng dụng.
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+//        currentUser = SessionManager.getInstance().getLoggedInMember();
+//        System.out.println("Logged-in Member: " + currentUser);
+        // KHỞI TẠO HOME TAB
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fxml/UserTab/HomeTabView.fxml"));
+            homeTab = fxmlLoader.load();
+            homeTabController = fxmlLoader.getController();
+            homeTabController.setMainController(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        // ĐẶT HOME TAB LÀ TAB MẶC ĐỊNH KHI KHỞI ĐỘNG ỨNG DỤNG
+        currentTab = homeButton;
+        currentTab.getStyleClass().clear();
+        currentTab.getStyleClass().add("MenuButtonPressed");
+
+        ContentPane.getChildren().add(homeTab);
+
+        // TODO: Hiển thị thông tin người dùng
+//        if (currentUser != null) {
+//            userName.setText("Xin chào, " + currentUser.getUserName());
+//        } else {
+//            userName.setText("Xin chào, khách!");
+//        }
+
+        super.initialize(location, resources);
+    }
 
 }
