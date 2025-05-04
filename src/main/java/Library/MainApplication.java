@@ -14,12 +14,36 @@ import java.util.Objects;
 
 public class MainApplication extends Application {
 
-//    public LogInViewController.LogInType logInType;
+    public LogInViewController.LogInType logInType;
 //    private OverdueRequestHandler overdueRequestHandler;
 
     @Override
     public void start(Stage stage) throws IOException {
+        /**
+         * 1. Hiển thị cửa sổ đăng nhập
+         * 2. Dựa vào loại đăng nhập để hiển thị cửa sổ chính (ADMIN hoặc USER)
+         */
         ShowLogInWindow();
+
+        stage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("icon/icon-512.png"))));
+        stage.setResizable(false); // không cho phóng to, thu nhỏ cửa sổ
+
+        /**
+         * Nếu là USER thì hiển thị cửa sổ UserMainView
+         * Nếu là ADMIN thì hiển thị cửa sổ AdminMainView
+         */
+        if (logInType == LogInViewController.LogInType.USER) {
+            ShowUserWindow(stage);
+        } else if (logInType == LogInViewController.LogInType.ADMIN) {
+            ShowAdminWindow(stage);
+        }
+
+        // Add a shutdown hook to stop the scheduler gracefully
+//        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+//            if (overdueRequestHandler != null) {
+//                overdueRequestHandler.stop();
+//            }
+//        }));
     }
 
     private void ShowLogInWindow() throws IOException {
@@ -35,7 +59,7 @@ public class MainApplication extends Application {
         Firststage.setScene(scene);
         Firststage.showAndWait();
 
-//        logInType = controller.getReturnType();
+        logInType = controller.getReturnType();
     }
 
     private void ShowUserWindow(Stage stage) throws IOException {

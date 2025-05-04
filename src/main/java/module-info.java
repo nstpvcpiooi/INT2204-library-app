@@ -1,6 +1,6 @@
 module libraryapp {
-    requires javafx.controls;
-    requires javafx.fxml;
+    requires java.management;
+    requires MaterialFX;
 
 
     opens Library.ui to javafx.fxml;

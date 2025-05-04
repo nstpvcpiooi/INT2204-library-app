@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@../../css/loginwindow.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Library.ui.LogIn.UserLogInController">
+<AnchorPane stylesheets="@../../css/loginwindow.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Library.ui.LogIn.UserLogInController">
    <children>
       <VBox alignment="CENTER" prefHeight="650.0" prefWidth="500.0">
          <children>
@@ -35,7 +35,7 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="630.0" prefWidth="500.0" spacing="25.0">
                <children>
-                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="51.0" prefWidth="422.0" spacing="5.0" styleClass="input">
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="51.0" prefWidth="422.0" spacing="5.0" styleClass="input">
                      <children>
                         <ImageView fitHeight="18.0" fitWidth="18.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -48,7 +48,7 @@
                         <TextField fx:id="username" onKeyPressed="#tab" prefHeight="47.0" prefWidth="432.0" promptText="Nhập tên người dùng" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="51.0" prefWidth="422.0" spacing="5.0" styleClass="input">
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="51.0" prefWidth="422.0" spacing="5.0" styleClass="input">
                      <children>
                         <ImageView fitHeight="18.0" fitWidth="18.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -58,7 +58,7 @@
                               <Insets left="15.0" />
                            </HBox.margin>
                         </ImageView>
-                        <PasswordField fx:id="password" focusTraversable="false" onKeyPressed="#enter" prefHeight="47.0" prefWidth="453.0" promptText="Nhập mật khẩu" />
+                        <PasswordField fx:id="password" focusTraversable="false" onKeyPressed="#enter" prefHeight="37.0" prefWidth="377.0" promptText="Nhập mật khẩu" />
                      </children>
                   </HBox>
                   <Button id="submitButton" fx:id="submitButton" mnemonicParsing="false" onAction="#submit" prefHeight="46.0" prefWidth="206.0" styleClass="LogInButton" text="ĐĂNG NHẬP" />
