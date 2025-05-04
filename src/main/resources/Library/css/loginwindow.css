@@ -1,0 +1,47 @@
+.LogInButton {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #c0c0c0;
+    -fx-text-fill: #222222;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+}
+
+.LogInButton:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-cursor: hand;
+}
+
+VBox {
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+}
+
+#back {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-font-family: Inter;
+    -fx-font-size: 13;
+    -fx-cursor: hand;
+}
+
+PasswordField, TextField {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-family: "Barlow";
+    -fx-font-size: 16;
+}
+
+.input {
+    -fx-border-color: #c0c0c0;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+}
+
+.text-input:focused {
+    -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);
+}
