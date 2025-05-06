@@ -7,13 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class MainApplication extends Application {
-
+    public final String LOGO_PATH = "icon/APP-LOGO.png";
     public LogInViewController.LogInType logInType;
 //    private OverdueRequestHandler overdueRequestHandler;
 
@@ -25,7 +26,7 @@ public class MainApplication extends Application {
          */
         ShowLogInWindow();
 
-        stage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("icon/icon-512.png"))));
+        stage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream(LOGO_PATH))));
         stage.setResizable(false); // không cho phóng to, thu nhỏ cửa sổ
 
         /**
@@ -53,8 +54,8 @@ public class MainApplication extends Application {
         LogInViewController controller = fxmlLoader.getController();
 
         Stage Firststage = new Stage();
-        Firststage.setTitle("Library App - Log In");
-        Firststage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("icon/icon-512.png"))));
+        Firststage.setTitle("UETLibz - LOG IN");
+        Firststage.getIcons().add(new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream(LOGO_PATH))));
         Firststage.setResizable(false); // không cho phóng to, thu nhỏ cửa sổ
         Firststage.setScene(scene);
         Firststage.showAndWait();
@@ -67,7 +68,7 @@ public class MainApplication extends Application {
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
 
-        stage.setTitle("Library App - User");
+        stage.setTitle("UETLibz - USER");
         stage.setScene(scene);
 
         // Start the overdue handler thread
@@ -88,7 +89,7 @@ public class MainApplication extends Application {
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
 
-        stage.setTitle("Library App - Admin");
+        stage.setTitle("UETLibz - ADMIN");
         stage.setScene(scene);
 
         // Start the overdue handler thread
