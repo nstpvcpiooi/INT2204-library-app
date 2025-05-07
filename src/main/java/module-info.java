@@ -7,6 +7,7 @@ module libraryapp {
     requires org.json;
     requires java.mail;
     requires mysql.connector.j;
+    requires org.controlsfx.controls;
 
     exports Library.ui;
     opens Library.ui to javafx.fxml;

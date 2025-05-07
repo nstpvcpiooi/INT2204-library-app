@@ -1,5 +1,7 @@
 package Library.ui.LogIn;
 
+import Library.backend.Login.DAO.MemberDAO;
+import Library.backend.Login.DAO.MemberDAOImpl;
 import Library.ui.Utils.VisiblePasswordFieldSkin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +23,7 @@ public abstract class LogInTabController implements Initializable {
     @FXML
     protected PasswordField password;
 
-//    public MemberDAO memberDAO = MemberDAOImpl.getInstance();
+    public MemberDAO memberDAO = MemberDAOImpl.getInstance();
 
     protected LogInViewController logInViewController;
 

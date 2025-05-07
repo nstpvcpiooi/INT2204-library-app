@@ -1,6 +1,8 @@
 package Library.ui.LogIn;
 
 import Library.MainApplication;
+import Library.backend.Session.SessionManager;
+import Library.ui.Utils.Notification;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,13 +29,17 @@ public class UserLogInController extends LogInTabController {
     void submit(ActionEvent event) {
         String username = this.username.getText();
         String password = this.password.getText();
-        if(!password.isEmpty() /** TODO: CHECK PASSWORD */) {
+        if(memberDAO.login(username, password) != null) {
+            // TODO: YES, set the logged in member to user
+            SessionManager.getInstance().setLoggedInMember(memberDAO.login(username, password));
             logInViewController.setReturnType(LogInViewController.LogInType.USER);
             Stage current = ((Stage) submitButton.getScene().getWindow());
             current.close();
         }
         else {
-            //TODO: Notify the user that they have failed to log in
+            // TODO: Notify the user that they have failed to log in
+            Notification notification = new Notification("Lỗi!", "Đăng nhập thất bại!");
+            notification.display();
         }
     }
 
