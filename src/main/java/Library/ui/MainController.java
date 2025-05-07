@@ -1,6 +1,7 @@
 package Library.ui;
 
 import Library.MainApplication;
+import Library.backend.Login.Model.Member;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.effect.ColorAdjust;
@@ -20,7 +21,18 @@ public abstract class MainController implements Initializable {
 
     public static final Image DEFAULT_COVER = new Image(MainApplication.class.getResource("image/default-cover.png").toString());
 
-//    protected PopUpWindow popUpWindow;
+    public Member getCurrentUser() {
+        return currentUser;
+    }
+
+    //    protected PopUpWindow popUpWindow;
+
+    public void setCurrentUser(Member currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    private Member currentUser;
+
 //
 //    public PopUpWindow getPopUpWindow() {
 //        return popUpWindow;

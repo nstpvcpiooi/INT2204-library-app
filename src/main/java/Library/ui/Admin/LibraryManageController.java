@@ -3,6 +3,7 @@ package Library.ui.Admin;
 import Library.backend.bookDao.GoogleBookDao;
 import Library.backend.bookDao.MysqlBookDao;
 import Library.backend.bookModel.Book;
+import Library.ui.BookCard.BookCardCell;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static Library.ui.BookCard.BookCardCell.BookCardType.LARGE;
 
 
 /**
@@ -139,7 +142,7 @@ public class LibraryManageController extends AdminTabController implements Initi
         SearchResult.setItems(bookList);
 
         // Khởi tạo book card cell
-//        SearchResult.setCellFactory(lv -> new BookCardCell(LARGE));
+        SearchResult.setCellFactory(lv -> new BookCardCell(LARGE));
 
         // Hiển thị sách trong tab Library Manage khi mới mở ứng dụng
         bookList.addAll(getSearchList(""));

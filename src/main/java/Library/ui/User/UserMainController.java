@@ -1,6 +1,7 @@
 package Library.ui.User;
 
 import Library.MainApplication;
+import Library.backend.Session.SessionManager;
 import Library.ui.MainController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,8 +54,8 @@ public class UserMainController extends MainController {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        currentUser = SessionManager.getInstance().getLoggedInMember();
-//        System.out.println("Logged-in Member: " + currentUser);
+        setCurrentUser(SessionManager.getInstance().getLoggedInMember());
+        System.out.println("Logged-in Member: " + getCurrentUser());
 
         // KHỞI TẠO HOME TAB
         try {
@@ -94,11 +95,11 @@ public class UserMainController extends MainController {
         ContentPane.getChildren().add(homeTab);
 
         // TODO: Hiển thị thông tin người dùng
-//        if (currentUser != null) {
-//            userName.setText("Xin chào, " + currentUser.getUserName());
-//        } else {
-//            userName.setText("Xin chào, khách!");
-//        }
+        if (getCurrentUser() != null) {
+            userName.setText("Xin chào, " + getCurrentUser().getUserName());
+        } else {
+            userName.setText("Xin chào, khách!");
+        }
 
         super.initialize(location, resources);
     }

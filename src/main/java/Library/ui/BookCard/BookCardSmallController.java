@@ -1,22 +1,37 @@
 package Library.ui.BookCard;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
+import Library.backend.bookModel.Book;
+import javafx.scene.image.Image;
 
-public class BookCardSmallController {
+import static Library.ui.MainController.DEFAULT_COVER;
 
-    @FXML
-    private Label author;
+/**
+ * Controller cho một card sách nhỏ (hiển thị ảnh bìa, tiêu đề, tác giả).
+ */
+public class BookCardSmallController extends BookCardController {
 
-    @FXML
-    private HBox container;
+    @Override
+    public void setData(Book book) {
 
-    @FXML
-    private ImageView cover;
+        // 1. LẤY ẢNH BÌA SÁCH
+        try {
+            // TODO KIỂM TRA ĐỊA CHỈ ẢNH BỊ LỖI?
+            Image image = new Image(book.getCoverCode());
+            cover.setImage(image);
 
-    @FXML
-    private Label title;
+        } catch (Exception e) {
+            System.out.println("Error loading image from " + book.getCoverCode());
+            cover.setImage(DEFAULT_COVER);
 
+            // demo với link ảnh trên web
+//            cover.setImage (new Image("https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg"));
+        }
+
+        // 2. LẤY TIÊU ĐỀ
+        title.setText(book.getTitle());
+
+        // 3. LẤY TÊN TÁC GIẢ
+        author.setText(book.getAuthor());
+    }
 }
+
