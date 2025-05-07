@@ -11,10 +11,15 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller cho giao diện chính của ứng dụng dành cho admin. (AdminMainView)
+ * (gồm các nút điều hướng và phần chứa nội dung chính của các tab)
+ */
 public class AdminMainController extends MainController {
 
-    @FXML
-    private AnchorPane ContentPane;
+    /**
+     * Các nút điều hướng giữa các tab.
+     */
 
     @FXML
     private Pane LibraryManageButton;
@@ -40,6 +45,9 @@ public class AdminMainController extends MainController {
     public RequestManageController requestManageController;
     public AnchorPane requestManageTab;
 
+    /**
+     * Xử lý sự kiện khi click vào các nút điều hướng -> hiển thị tab tương ứng (setContentPane).
+     */
     @FXML
     void ButtonClick(MouseEvent event) {
         setCurrentTab((Pane) event.getSource());

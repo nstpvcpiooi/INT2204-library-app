@@ -60,6 +60,11 @@ public class VisiblePasswordFieldSkin extends TextFieldSkin {
 
     }
 
+    public void setDefault() {
+        actionIcon.setContent(Icons.VIEWER.getContent());
+        mask = true;
+    }
+
     @Override
     protected void layoutChildren(double x, double y, double w, double h) {
         super.layoutChildren(x, y, w, h);

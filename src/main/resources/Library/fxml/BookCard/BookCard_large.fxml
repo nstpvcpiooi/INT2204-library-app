@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="container" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="830.0" stylesheets="@../../css/BookCard.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Library.ui.BookCard.BookCardLargeController">
+   <children>
+      <ImageView fx:id="cover" fitHeight="129.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+         <HBox.margin>
+            <Insets left="15.0" right="15.0" />
+         </HBox.margin>
+      </ImageView>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="98.0" prefWidth="731.0">
+         <children>
+            <Label fx:id="author" text="Tác giả">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Barlow Medium" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="title" text="Tiêu đề">
+               <font>
+                  <Font name="Barlow ExtraBold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="quantity" text="Số lượng">
+               <font>
+                  <Font name="Barlow ExtraBold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox prefHeight="150.0" prefWidth="367.0">
+         <children>
+            <Label fx:id="OverdueTag" alignment="CENTER" prefHeight="152.0" prefWidth="168.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</HBox>

@@ -1,8 +1,10 @@
 package Library.ui;
 
+import Library.MainApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.effect.ColorAdjust;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -16,10 +18,10 @@ import java.util.ResourceBundle;
  */
 public abstract class MainController implements Initializable {
 
-//    public static final Image DEFAULT_COVER = new Image(MainApplication.class.getResource("image/default-cover.png").toString());
+    public static final Image DEFAULT_COVER = new Image(MainApplication.class.getResource("image/default-cover.png").toString());
 
 //    protected PopUpWindow popUpWindow;
-
+//
 //    public PopUpWindow getPopUpWindow() {
 //        return popUpWindow;
 //    }

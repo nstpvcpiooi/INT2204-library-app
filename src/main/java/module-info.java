@@ -23,4 +23,7 @@ module libraryapp {
 
     exports Library.ui.LogIn;
     opens Library.ui.LogIn to javafx.fxml;
+
+    exports Library.ui.BookCard;
+    opens Library.ui.BookCard to javafx.fxml;
 }
