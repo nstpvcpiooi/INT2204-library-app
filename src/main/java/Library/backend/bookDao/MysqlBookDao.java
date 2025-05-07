@@ -1,14 +1,14 @@
 package Library.backend.bookDao;
 
+import Library.backend.bookModel.Book;
+import Library.backend.database.JDBCUtil;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import Library.backend.bookModel.Book;
-import Library.backend.database.JDBCUtil;
 
 public class MysqlBookDao implements BookDao {
 

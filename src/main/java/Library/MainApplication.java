@@ -1,5 +1,6 @@
 package Library;
 
+import Library.backend.Request.OverdueRequestHandler;
 import Library.ui.LogIn.LogInViewController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -7,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.util.Objects;
 public class MainApplication extends Application {
     public final String LOGO_PATH = "icon/APP-LOGO.png";
     public LogInViewController.LogInType logInType;
-//    private OverdueRequestHandler overdueRequestHandler;
+    private OverdueRequestHandler overdueRequestHandler;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -39,12 +39,12 @@ public class MainApplication extends Application {
             ShowAdminWindow(stage);
         }
 
-        // Add a shutdown hook to stop the scheduler gracefully
-//        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-//            if (overdueRequestHandler != null) {
-//                overdueRequestHandler.stop();
-//            }
-//        }));
+        // Add a shutdown hook to stop the scheduler gracefully.
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            if (overdueRequestHandler != null) {
+                overdueRequestHandler.stop();
+            }
+        }));
     }
 
     private void ShowLogInWindow() throws IOException {
@@ -72,8 +72,8 @@ public class MainApplication extends Application {
         stage.setScene(scene);
 
         // Start the overdue handler thread
-//        overdueRequestHandler = new OverdueRequestHandler();
-//        overdueRequestHandler.start();
+        overdueRequestHandler = new OverdueRequestHandler();
+        overdueRequestHandler.start();
 
         // KHI ĐÓNG CỬA SỔ
         stage.setOnCloseRequest(windowEvent -> {
@@ -93,8 +93,8 @@ public class MainApplication extends Application {
         stage.setScene(scene);
 
         // Start the overdue handler thread
-//        overdueRequestHandler = new OverdueRequestHandler();
-//        overdueRequestHandler.start();
+        overdueRequestHandler = new OverdueRequestHandler();
+        overdueRequestHandler.start();
 
         // KHI ĐÓNG CỬA SỔ
         stage.setOnCloseRequest(windowEvent -> {
