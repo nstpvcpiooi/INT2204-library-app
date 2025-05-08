@@ -2,6 +2,7 @@ package Library.ui;
 
 import Library.MainApplication;
 import Library.backend.Login.Model.Member;
+import Library.ui.PopUpWindow.PopUpWindow;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.effect.ColorAdjust;
@@ -21,22 +22,9 @@ public abstract class MainController implements Initializable {
 
     public static final Image DEFAULT_COVER = new Image(MainApplication.class.getResource("image/default-cover.png").toString());
 
-    public Member getCurrentUser() {
-        return currentUser;
-    }
-
-    //    protected PopUpWindow popUpWindow;
-
-    public void setCurrentUser(Member currentUser) {
-        this.currentUser = currentUser;
-    }
+    protected PopUpWindow popUpWindow;
 
     private Member currentUser;
-
-//
-//    public PopUpWindow getPopUpWindow() {
-//        return popUpWindow;
-//    }
 
     /**
      * Nút hiện tại đang được chọn.
@@ -49,18 +37,29 @@ public abstract class MainController implements Initializable {
     @FXML
     protected AnchorPane ContentPane;
 
+    @FXML
+    protected AnchorPane root;
+
+    public void setCurrentUser(Member currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public Member getCurrentUser() {
+        return currentUser;
+    }
+
+    public PopUpWindow getPopUpWindow() {
+        return popUpWindow;
+    }
+
     public AnchorPane getRoot() {
         return root;
     }
 
-    @FXML
-    protected AnchorPane root;
-
-
     public void initialize(URL location, ResourceBundle resources) {
         // KHỞI TẠO BOOK INFO VIEW
-//        popUpWindow = new PopUpWindow();
-//        popUpWindow.setMainController(this);
+        popUpWindow = new PopUpWindow();
+        popUpWindow.setMainController(this);
     }
 
     /**

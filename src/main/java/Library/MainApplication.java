@@ -18,8 +18,15 @@ public class MainApplication extends Application {
     public LogInViewController.LogInType logInType;
     private OverdueRequestHandler overdueRequestHandler;
 
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    private static Stage primaryStage;
+
     @Override
     public void start(Stage stage) throws IOException {
+        primaryStage = stage;
         /**
          * 1. Hiển thị cửa sổ đăng nhập
          * 2. Dựa vào loại đăng nhập để hiển thị cửa sổ chính (ADMIN hoặc USER)

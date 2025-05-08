@@ -11,6 +11,8 @@ import javafx.scene.layout.HBox;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static Library.ui.MainController.DEFAULT_COVER;
+
 public class BookCardCell extends ListCell<Book> {
     public enum BookCardType {SMALL, LARGE}
 
@@ -50,13 +52,23 @@ public class BookCardCell extends ListCell<Book> {
                     // Load book data
                     controller.setData(book);
 
+                    Image image;
                     // Load book cover image
-                    Image image = new Image(book.getCoverCode());
+                    try {
+                        image = new Image(book.getCoverCode());
+                    } catch (Exception e) {
+                        // Handle the case where the image cannot be loaded
+                        // You can set a default image or leave it empty
+                        System.err.println("Error loading image: " + e.getMessage());
+                        // Set a default image or leave it empty
+                        image = DEFAULT_COVER;
+                    }
 
                     // Update the UI on the JavaFX Application Thread
+                    Image finalImage = image;
                     Platform.runLater(() -> {
                         if (getItem() == book) {
-                            controller.cover.setImage(image);
+                            controller.cover.setImage(finalImage);
                             setGraphic(bookCard);
                         }
                     });

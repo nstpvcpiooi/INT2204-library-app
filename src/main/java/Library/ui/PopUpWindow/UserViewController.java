@@ -1,20 +1,24 @@
+// src/main/java/Library/ui/PopUpWindow/UserViewController.java
 package Library.ui.PopUpWindow;
 
+import Library.backend.Login.DAO.MemberDAO;
+import Library.backend.Login.DAO.MemberDAOImpl;
+import Library.backend.Login.Model.Member;
+import Library.backend.Session.SessionManager;
+import Library.ui.Admin.AdminMainController;
+import Library.ui.Utils.Notification;
+import Library.ui.Utils.VisiblePasswordFieldSkin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 
-public class UserViewController {
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class UserViewController extends PopUpController implements Initializable {
     @FXML
     private Button cancelButton;
-
-    @FXML
-    private AnchorPane container;
 
     @FXML
     private TextField email;
@@ -29,22 +33,82 @@ public class UserViewController {
     private TextField phone;
 
     @FXML
-    private Label tabTitle;
-
-    @FXML
     private TextField username;
 
     @FXML
     private PasswordField verifypassword;
 
     @FXML
-    void Save(ActionEvent event) {
+    private Label tabTitle;
 
-    }
 
     @FXML
-    void close(ActionEvent event) {
+    void Save(ActionEvent event) throws InstantiationException, IllegalAccessException {
+        if (tabTitle.getText().equals("THÊM USER MỚI")) {
+            MemberDAO memberDAO = MemberDAOImpl.getInstance();
+            Member member = new Member();
+            member.setUserName(username.getText());
+            member.setPassword(password.getText());
+            member.setEmail(email.getText());
+            member.setPhone(phone.getText());
+            memberDAO.createMember(member);
+
+            ((AdminMainController) getPopUpWindow().getMainController()).userManageController.updateUSerList();
+        } else {
+            MemberDAO memberDAO = MemberDAOImpl.getInstance();
+            Member member = new Member();
+            member.setMemberID(memberDAO.getMemberByEmail(email.getText()).getMemberID());
+            member.setUserName(username.getText());
+            member.setPassword(password.getText());
+            member.setEmail(email.getText());
+            member.setPhone(phone.getText());
+            memberDAO.updateMember(member);
+
+            AdminMainController adminMainController = (AdminMainController) getPopUpWindow().getMainController();
+            adminMainController.userManageController.updateUSerList();
+
+            System.out.println("Updated user: " + member);
+            SessionManager.getInstance().setLoggedInMember(member);
+        }
+        getPopUpWindow().close();
+        Notification notification = new Notification("Cập nhật thông tin người dùng", "Đã cập nhật thông tin người dùng thành công");
+        notification.display();
+        // Refresh the data in UserManageController
+        ;
 
     }
 
+    public void setData(Member user) {
+        passwordFieldSkin.setDefault();
+        verifypasswordFieldSkin.setDefault();
+
+        if (user == null) {
+            username.setText("");
+            password.setText("");
+            verifypassword.setText("");
+            email.setText("");
+            phone.setText("");
+            return;
+        }
+        username.setText(user.getUserName());
+        password.setText(user.getPassword());
+        verifypassword.setText(user.getPassword());
+        email.setText(user.getEmail());
+        phone.setText(user.getPhone());
+    }
+
+    public void setTabTitle(String title) {
+        tabTitle.setText(title);
+    }
+
+    VisiblePasswordFieldSkin passwordFieldSkin;
+    VisiblePasswordFieldSkin verifypasswordFieldSkin;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        passwordFieldSkin = new VisiblePasswordFieldSkin(password);
+        verifypasswordFieldSkin = new VisiblePasswordFieldSkin(verifypassword);
+        password.setSkin(passwordFieldSkin);
+        verifypassword.setSkin(verifypasswordFieldSkin);
+    }
 }

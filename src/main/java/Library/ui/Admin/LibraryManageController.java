@@ -1,7 +1,5 @@
 package Library.ui.Admin;
 
-import Library.backend.bookDao.GoogleBookDao;
-import Library.backend.bookDao.MysqlBookDao;
 import Library.backend.bookModel.Book;
 import Library.ui.BookCard.BookCardCell;
 import javafx.collections.FXCollections;
@@ -68,7 +66,7 @@ public class LibraryManageController extends AdminTabController implements Initi
      */
     @FXML
     void AddBook(MouseEvent event) {
-//        getMainController().getPopUpWindow().displayAdd();
+        getMainController().getPopUpWindow().displayAdd();
     }
 
     /**
@@ -87,9 +85,9 @@ public class LibraryManageController extends AdminTabController implements Initi
             bookList.clear();
             bookList.addAll(getSearchList(query));
         }
-//        String query = SearchText.getText();
-//        SearchResult.getItems().clear();
-//        SearchResult.getItems().addAll(getSearchList(query));
+        String query = SearchText.getText();
+        SearchResult.getItems().clear();
+        SearchResult.getItems().addAll(getSearchList(query));
     }
 
     /**
@@ -130,7 +128,7 @@ public class LibraryManageController extends AdminTabController implements Initi
     @FXML
     void SelectBook(MouseEvent event) {
         Book selectedBook = SearchResult.getSelectionModel().getSelectedItem();
-//        getMainController().getPopUpWindow().displayInfo(selectedBook);
+        getMainController().getPopUpWindow().displayInfo(selectedBook);
     }
 
     /**
@@ -156,6 +154,7 @@ public class LibraryManageController extends AdminTabController implements Initi
             }
         }
     }
+
     public void refreshData() {
         bookList.clear();
         bookList.addAll(getSearchList(""));
