@@ -196,7 +196,6 @@ public class MemberDAOImpl implements MemberDAO {
                 member.setPassword(resultSet.getString("password"));
                 member.setEmail(resultSet.getString("email"));
                 member.setPhone(resultSet.getString("phone"));
-                member.setOtp(resultSet.getString("otp"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -206,15 +205,38 @@ public class MemberDAOImpl implements MemberDAO {
     @Override
     public boolean updateMember(Member member) {
         try (Connection connection = JDBCUtil.getConnection()) {
-            String sql = "UPDATE members SET userName = ?, password = ?, email = ?, phone = ?, otp = ? WHERE memberID = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, member.getUserName());
-            preparedStatement.setString(2, member.getPassword());
-            preparedStatement.setString(3, member.getEmail());
-            preparedStatement.setString(4, member.getPhone());
-            preparedStatement.setString(5, member.getOtp());
-            preparedStatement.setInt(6, member.getMemberID());
-            int rowsUpdated = preparedStatement.executeUpdate();
+            // First check if the member exists
+            String checkQuery = "SELECT * FROM Members WHERE memberID = ?";
+            PreparedStatement checkStmt = connection.prepareStatement(checkQuery);
+            checkStmt.setInt(1, member.getMemberID());
+            ResultSet rs = checkStmt.executeQuery();
+
+            if (!rs.next()) {
+                return false; // Member not found
+            }
+
+            // Check for duplicate username or email (excluding current member)
+            String duplicateQuery = "SELECT COUNT(*) FROM Members WHERE (userName = ? OR email = ?) AND memberID != ?";
+            PreparedStatement duplicateStmt = connection.prepareStatement(duplicateQuery);
+            duplicateStmt.setString(1, member.getUserName());
+            duplicateStmt.setString(2, member.getEmail());
+            duplicateStmt.setInt(3, member.getMemberID());
+            ResultSet duplicateRs = duplicateStmt.executeQuery();
+
+            if (duplicateRs.next() && duplicateRs.getInt(1) > 0) {
+                return false; // Duplicate username or email found
+            }
+
+            // Update member information
+            String updateQuery = "UPDATE Members SET userName = ?, password = ?, email = ?, phone = ? WHERE memberID = ?";
+            PreparedStatement updateStmt = connection.prepareStatement(updateQuery);
+            updateStmt.setString(1, member.getUserName());
+            updateStmt.setString(2, member.getPassword());
+            updateStmt.setString(3, member.getEmail());
+            updateStmt.setString(4, member.getPhone());
+            updateStmt.setInt(5, member.getMemberID());
+
+            int rowsUpdated = updateStmt.executeUpdate();
             return rowsUpdated > 0;
         } catch (SQLException e) {
             e.printStackTrace();

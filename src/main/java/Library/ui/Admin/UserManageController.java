@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.beans.property.SimpleIntegerProperty;
 
 import java.net.URL;
 import java.util.List;
@@ -64,15 +65,15 @@ public class UserManageController extends AdminTabController implements Initiali
 
     @FXML
     void add(ActionEvent event) {
-//        getMainController().getPopUpWindow().getUserViewController().setTabTitle("THÊM USER MỚI");
-//        getMainController().getPopUpWindow().displayUser(null);
+        getMainController().getPopUpWindow().getUserViewController().setTabTitle("THÊM USER MỚI");
+        getMainController().getPopUpWindow().displayUser(null);
     }
 
     @FXML
     void edit(ActionEvent event) {
         User selectedItem = table.getSelectionModel().getSelectedItem();
-//        getMainController().getPopUpWindow().getUserViewController().setTabTitle("CHỈNH SỬA USER");
-//        getMainController().getPopUpWindow().displayUser(selectedItem);
+        getMainController().getPopUpWindow().getUserViewController().setTabTitle("CHỈNH SỬA USER");
+        getMainController().getPopUpWindow().displayUser(selectedItem);
     }
 
     @FXML
@@ -91,6 +92,7 @@ public class UserManageController extends AdminTabController implements Initiali
         if (opt.get() == yes) {
             MemberDAOImpl.getInstance().deleteMemberById(selectedItem.getMemberID());
             UserList.remove(selectedItem);
+            table.getSelectionModel().clearSelection();
             Notification notification = new Notification("Thành công!", "Đã xóa thành công " + selectedItem.getUserName());
             notification.display();
         }
@@ -104,19 +106,25 @@ public class UserManageController extends AdminTabController implements Initiali
         UserName.setCellValueFactory(new PropertyValueFactory<User, String>("userName"));
         Email.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
         Phone.setCellValueFactory(new PropertyValueFactory<User, String>("phone"));
-        ID.setCellValueFactory(new PropertyValueFactory<User, Integer>("memberID"));
+        ID.setCellValueFactory(cellData -> {
+            int index = UserList.indexOf(cellData.getValue());
+            return new SimpleIntegerProperty(index + 1).asObject();
+        });
         table.setItems(UserList);
     }
 
     public void refreshData() {
-//        List<User> users = MemberDAOImpl.getInstance().DisplayMembers();
-//        UserList = FXCollections.observableArrayList(users);
+        List<User> users = MemberDAOImpl.getInstance().DisplayMembers();
+        UserList = FXCollections.observableArrayList(users);
 
         UserName.setCellValueFactory(new PropertyValueFactory<User, String>("userName"));
         Email.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
         Phone.setCellValueFactory(new PropertyValueFactory<User, String>("phone"));
-        ID.setCellValueFactory(new PropertyValueFactory<User, Integer>("memberID"));
-//        table.setItems(UserList);
+        ID.setCellValueFactory(cellData -> {
+            int index = UserList.indexOf(cellData.getValue());
+            return new SimpleIntegerProperty(index + 1).asObject();
+        });
+        table.setItems(UserList);
 
         updateUSerList();
     }

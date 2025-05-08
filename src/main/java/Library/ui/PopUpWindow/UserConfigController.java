@@ -1,4 +1,3 @@
-// src/main/java/Library/ui/PopUpWindow/UserViewController.java
 package Library.ui.PopUpWindow;
 
 import Library.backend.Login.DAO.MemberDAO;
@@ -16,7 +15,7 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserViewController extends PopUpController implements Initializable {
+public class UserConfigController extends PopUpController implements Initializable {
     @FXML
     private Button cancelButton;
 
@@ -44,8 +43,9 @@ public class UserViewController extends PopUpController implements Initializable
 
     @FXML
     void Save(ActionEvent event) throws InstantiationException, IllegalAccessException {
-        if (tabTitle.getText().equals("THÊM USER MỚI")) {
-            MemberDAO memberDAO = MemberDAOImpl.getInstance();
+        MemberDAO memberDAO = MemberDAOImpl.getInstance();
+
+        if (tabTitle.getText().equals("THÊM USER MỚI") && validateInputs()) {
             Member member = new Member();
             member.setUserName(username.getText());
             member.setPassword(password.getText());
@@ -54,8 +54,13 @@ public class UserViewController extends PopUpController implements Initializable
             memberDAO.createMember(member);
 
             ((AdminMainController) getPopUpWindow().getMainController()).userManageController.updateUSerList();
-        } else {
-            MemberDAO memberDAO = MemberDAOImpl.getInstance();
+
+            System.out.println("Created user: " + member);
+            getPopUpWindow().close();
+            Notification notification = new Notification("Thêm người dùng", "Đã thêm người dùng thành công");
+            notification.display();
+
+        } else if (tabTitle.getText().equals("CHỈNH SỬA USER") && validateInputs()) {
             Member member = new Member();
             member.setMemberID(memberDAO.getMemberByEmail(email.getText()).getMemberID());
             member.setUserName(username.getText());
@@ -64,17 +69,15 @@ public class UserViewController extends PopUpController implements Initializable
             member.setPhone(phone.getText());
             memberDAO.updateMember(member);
 
-            AdminMainController adminMainController = (AdminMainController) getPopUpWindow().getMainController();
-            adminMainController.userManageController.updateUSerList();
+            ((AdminMainController) getPopUpWindow().getMainController()).userManageController.updateUSerList();
 
             System.out.println("Updated user: " + member);
             SessionManager.getInstance().setLoggedInMember(member);
+
+            getPopUpWindow().close();
+            Notification notification = new Notification("Cập nhật thông tin người dùng", "Đã cập nhật thông tin người dùng thành công");
+            notification.display();
         }
-        getPopUpWindow().close();
-        Notification notification = new Notification("Cập nhật thông tin người dùng", "Đã cập nhật thông tin người dùng thành công");
-        notification.display();
-        // Refresh the data in UserManageController
-        ;
 
     }
 
@@ -99,6 +102,29 @@ public class UserViewController extends PopUpController implements Initializable
 
     public void setTabTitle(String title) {
         tabTitle.setText(title);
+    }
+
+    private boolean validateInputs() {
+        String passwordText = password.getText();
+        String verifyPasswordText = verifypassword.getText();
+        String emailText = email.getText();
+        String phoneText = phone.getText();
+        String usernameText = username.getText();
+
+        if (usernameText.isEmpty() || passwordText.isEmpty() ||
+                verifyPasswordText.isEmpty() || emailText.isEmpty() || phoneText.isEmpty()) {
+            Notification notification = new Notification("Lỗi!", "Vui lòng điền đầy đủ thông tin");
+            notification.display();
+            return false;
+        }
+
+        if (!passwordText.equals(verifyPasswordText)) {
+            Notification notification = new Notification("Lỗi!", "Mật khẩu không khớp");
+            notification.display();
+            return false;
+        }
+
+        return true;
     }
 
     VisiblePasswordFieldSkin passwordFieldSkin;

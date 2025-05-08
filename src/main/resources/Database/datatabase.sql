@@ -18,7 +18,7 @@ CREATE TABLE Members
     password VARCHAR(255) NOT NULL,
     email    VARCHAR(255),
     phone    VARCHAR(55),
-
+    otp     VARCHAR(255),
     duty     INT -- = 1 nếu là admin, 0 nếu là user
 );
 

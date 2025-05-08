@@ -14,8 +14,6 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-import static Library.MainApplication.getPrimaryStage;
-
 public class PopUpWindow {
     protected Stage PopUpStage;
 
@@ -35,7 +33,7 @@ public class PopUpWindow {
     protected CustomAddController customAddController;
 
     protected Scene UserScene;
-    protected UserViewController userViewController;
+    protected UserConfigController userConfigController;
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
@@ -45,8 +43,8 @@ public class PopUpWindow {
         return mainController;
     }
 
-    public UserViewController getUserViewController() {
-        return userViewController;
+    public UserConfigController getUserViewController() {
+        return userConfigController;
     }
 
     /**
@@ -111,10 +109,10 @@ public class PopUpWindow {
 
         // UserView
         try {
-            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("fxml/PopUpWindow/UserView.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("fxml/PopUpWindow/UserConfig.fxml"));
             Parent root = loader.load();
-            userViewController = loader.getController();
-            userViewController.setPopUpWindow(this);
+            userConfigController = loader.getController();
+            userConfigController.setPopUpWindow(this);
             UserScene = new Scene(root);
             UserScene.setFill(Color.TRANSPARENT);
         } catch (IOException e) {
@@ -171,7 +169,7 @@ public class PopUpWindow {
     public void displayUser(Member user) {
         PopUpStage.setScene(UserScene);
         mainController.setBackgroundEffect();
-        userViewController.setData(user);
+        userConfigController.setData(user);
         PopUpStage.show();
     }
 
