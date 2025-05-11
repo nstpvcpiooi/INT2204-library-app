@@ -13,7 +13,7 @@
    <children>
       <HBox id="SearchBar" fx:id="SearchBar" alignment="CENTER" layoutX="25.0" layoutY="40.0" prefHeight="54.0" prefWidth="826.0">
          <children>
-            <TextField id="SearchText" fx:id="SearchText" onKeyReleased="#search" prefHeight="40.0" prefWidth="748.0" promptText="Tìm sách" />
+            <TextField id="SearchText" fx:id="SearchText" prefHeight="40.0" prefWidth="748.0" promptText="Tìm sách" />
             <ImageView fitHeight="22.0" fitWidth="22.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icon/search.png" />

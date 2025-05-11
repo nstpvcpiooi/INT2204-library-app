@@ -53,6 +53,10 @@ public class UserMainController extends MainController {
         return searchButton;
     }
 
+    public Pane getHomeButton() {
+        return homeButton;
+    }
+
     /**
      * Khởi tạo giao diện chính của ứng dụng.
      */

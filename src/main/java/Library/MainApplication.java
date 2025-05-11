@@ -2,6 +2,7 @@ package Library;
 
 import Library.backend.Request.OverdueRequestHandler;
 import Library.ui.LogIn.LogInViewController;
+import Library.ui.Utils.SearchUtils;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -52,6 +53,17 @@ public class MainApplication extends Application {
                 overdueRequestHandler.stop();
             }
         }));
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        if (overdueRequestHandler != null) {
+            overdueRequestHandler.stop();
+        }
+        Platform.exit();
+        System.exit(0);
+        SearchUtils.shutdownSearch();
     }
 
     private void ShowLogInWindow() throws IOException {
