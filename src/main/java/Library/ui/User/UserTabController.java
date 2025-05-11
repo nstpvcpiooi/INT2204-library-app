@@ -1,7 +1,7 @@
 package Library.ui.User;
 
 public abstract class UserTabController {
-    private UserMainController userMainController;
+    protected UserMainController userMainController;
 
     public UserMainController getMainController() {
         return userMainController;

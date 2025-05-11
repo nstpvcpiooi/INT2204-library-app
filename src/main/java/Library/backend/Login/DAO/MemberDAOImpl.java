@@ -72,6 +72,23 @@ public class MemberDAOImpl implements MemberDAO {
     }
 
     @Override
+    public String getUserNameByID(int memberId) {
+        try (Connection connection = JDBCUtil.getConnection()) {
+            String query = "SELECT userName FROM Members WHERE memberID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, memberId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                return resultSet.getString("userName");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public boolean createMember(Member member) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

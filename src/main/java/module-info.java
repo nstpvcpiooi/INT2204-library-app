@@ -32,4 +32,6 @@ module libraryapp {
 
     exports Library.backend.Login.Model;
     opens Library.backend.Login.Model to javafx.fxml;
+
+    opens Library.backend.Request.Model to javafx.base;
 }

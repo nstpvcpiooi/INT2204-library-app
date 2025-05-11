@@ -49,6 +49,10 @@ public class UserMainController extends MainController {
     public MyRequestTabController myRequestTabController;
     public AnchorPane myRequestTab;
 
+    public Pane getSearchButton() {
+        return searchButton;
+    }
+
     /**
      * Khởi tạo giao diện chính của ứng dụng.
      */
