@@ -284,29 +284,11 @@ public class MysqlBookDao implements BookDao {
         }
     }
 
-/*
-    @Override
-    public void updateBookStatus(String bookID, int newStatus) {
-        try {
-            Connection con = JDBCUtil.getConnection();
 
-            String sql = "UPDATE Books SET status = ? WHERE bookID = ?";
-            PreparedStatement pst = con.prepareStatement(sql);
-            pst.setInt(1, newStatus);
-            pst.setString(2, bookID);
-
-            pst.executeUpdate(); // Thực thi câu lệnh
-            JDBCUtil.closeConnection(con);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    */
 
 
     @Override
     public void generateQrCodeForBook(String bookID) {
-        // ko viet trong lop nay
     }
 
     @Override
