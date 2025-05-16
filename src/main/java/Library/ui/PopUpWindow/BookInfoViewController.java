@@ -83,63 +83,64 @@ public class BookInfoViewController extends PopUpController {
             getPopUpWindow().close();
             Notification notification = new Notification("Chúc mừng!", "Bạn đã xóa sách thành công");
             notification.display();
-
         } else if (getPopUpWindow().getMainController() instanceof UserMainController) {
             //  TODO: TRẢ SÁCH
             SessionManager sessionManager = SessionManager.getInstance();
             User user = new User(sessionManager.getLoggedInMember());
-            user.createReturnRequest(selectedBook.getBookID());
             Request request = RequestDAOImpl.getInstance().getRequestByMemberIDAndBookID(user.getMemberID(), selectedBook.getBookID());
-            RequestDAOImpl.getInstance().updateRequest(request);
-            //request = RequestDAOImpl.getInstance().getRequestByMemberIDAndBookID(user.getMemberID(), selectedBook.getBookID());
-            if (request.getStatus().equals("approved return")) {
-                ActionButton.setText("MƯỢN SÁCH");
-
-                ActionButton.getStyleClass().remove("BorrowedButton");
-                ActionButton.setDisable(false);
-                RemoveButton.setVisible(false);
-                Notification notification = new Notification("Chúc mừng!", "Bạn đã trả sách thành công");
-                notification.display();
-            }
-            else {
-                ActionButton.setText("ĐÃ MƯỢN");
-                ActionButton.getStyleClass().add("BorrowedButton");
-                ActionButton.setDisable(true);
-                RemoveButton.setText("ĐANG TRẢ");
-                RemoveButton.setVisible(true);
-                RemoveButton.setDisable(true);
-                RemoveButton.getStyleClass().add("BorrowedButton");
+            
+            if (request != null && request.getStatus().equals("approved issue")) {
+                user.createReturnRequest(selectedBook.getBookID());
+                request = RequestDAOImpl.getInstance().getRequestByMemberIDAndBookID(user.getMemberID(), selectedBook.getBookID());
+                
+                if (request.getStatus().equals("pending return")) {
+                    ActionButton.setText("ĐÃ MƯỢN");
+                    ActionButton.getStyleClass().add("BorrowedButton");
+                    ActionButton.setDisable(true);
+                    RemoveButton.setText("ĐANG TRẢ");
+                    RemoveButton.setVisible(true);
+                    RemoveButton.setDisable(true);
+                    RemoveButton.getStyleClass().add("BorrowedButton");
+                    Notification notification = new Notification("Thông báo", "Yêu cầu trả sách đang chờ duyệt");
+                    notification.display();
+                }
             }
         }
     }
-
 
     @FXML
     void Action(ActionEvent event)  {
         if (getPopUpWindow().getMainController() instanceof AdminMainController) {
             getPopUpWindow().displayEdit(selectedBook);
         } else if (getPopUpWindow().getMainController() instanceof UserMainController) {
-
-            // TODO: MƯỢN SÁCH
             SessionManager sessionManager = SessionManager.getInstance();
             User user = new User(sessionManager.getLoggedInMember());
-            if (selectedBook.getQuantity()>0) {
-                if (user.hasOverdueBook())
-                {
+            
+            if (selectedBook.getQuantity() > 0) {
+                if (user.hasOverdueBook()) {
                     Notification notification = new Notification("Lỗi!", "Bạn đang mượn sách quá hạn. Vui lòng trả sách trước khi mượn sách mới");
                     notification.display();
                     return;
                 }
+                
                 user.createIssueRequest(selectedBook.getBookID());
-                ActionButton.setText("ĐANG DUYỆT");
-                ActionButton.getStyleClass().add("BorrowedButton");
-                ActionButton.setDisable(true);
-                RemoveButton.setText("TRẢ SÁCH");
-                RemoveButton.setVisible(true);
-            }
-            else {
+                Request request = RequestDAOImpl.getInstance().getRequestByMemberIDAndBookID(user.getMemberID(), selectedBook.getBookID());
+                
+                if (request != null && request.getStatus().equals("pending issue")) {
+                    ActionButton.setText("ĐANG DUYỆT");
+                    ActionButton.getStyleClass().add("BorrowedButton");
+                    ActionButton.setDisable(true);
+                    RemoveButton.setText("HỦY MƯỢN");
+                    RemoveButton.setVisible(true);
+                    RemoveButton.setDisable(false);
+                    Notification notification = new Notification("Thông báo", "Yêu cầu mượn sách đang chờ duyệt");
+                    notification.display();
+                }
+            } else {
                 ActionButton.setText("HẾT SÁCH");
                 ActionButton.setDisable(true);
+                Notification notification = new Notification("Thông báo", "Sách hiện đang hết");
+                notification.display();
             }
         }
     }
