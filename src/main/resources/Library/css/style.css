@@ -66,3 +66,12 @@
 #profileButton .VBox {
     -fx-background-color: white;
 }
+
+#SignOutButton {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-family: -default-font-family;
+    -fx-font-size: 13;
+    -fx-cursor: hand;
+    -fx-graphic-text-gap: 7px;
+}

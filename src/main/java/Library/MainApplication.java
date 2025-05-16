@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class MainApplication extends Application {
-    public final String LOGO_PATH = "icon/APP-LOGO.png";
+    public static final String LOGO_PATH = "icon/APP-LOGO.png";
     public LogInViewController.LogInType logInType;
     private OverdueRequestHandler overdueRequestHandler;
 
