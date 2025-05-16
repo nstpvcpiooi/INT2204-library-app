@@ -1,6 +1,7 @@
 package Library.ui.User;
 
 import Library.MainApplication;
+import Library.backend.Login.Model.Member;
 import Library.backend.Session.SessionManager;
 import Library.ui.MainController;
 import javafx.fxml.FXML;
@@ -48,6 +49,8 @@ public class UserMainController extends MainController {
     /** MyRequest Tab */
     public MyRequestTabController myRequestTabController;
     public AnchorPane myRequestTab;
+
+    private Member currentUser;
 
     public Pane getSearchButton() {
         return searchButton;
@@ -119,7 +122,16 @@ public class UserMainController extends MainController {
     void ButtonClick(MouseEvent event) {
         if (event.getSource().equals(profileButton)) {
 
+            currentUser = SessionManager.getInstance().getLoggedInMember();
+            System.out.println("Logged-in Member: " + currentUser);
             // TODO: Hiển thị NGƯỜI DÙNG VỪA ĐĂNG NHẬP
+            if (currentUser != null) {
+                getPopUpWindow().displayUser(currentUser);
+                getPopUpWindow().getUserViewController().setTabTitle("THÔNG TIN CỦA BẠN");
+            } else {
+                System.err.println("Không tìm thấy thông tin người dùng!");
+            }
+            return;
 
         }
         setCurrentTab((Pane) event.getSource());
