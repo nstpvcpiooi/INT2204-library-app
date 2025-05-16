@@ -26,6 +26,8 @@ public class BookCardCell extends ListCell<Book> {
 
     public BookCardCell(BookCardType type) {
         this.type = type;
+        // Tắt style mặc định khi selected
+        setStyle("-fx-background-color: transparent;");
     }
 
     @Override
@@ -38,6 +40,7 @@ public class BookCardCell extends ListCell<Book> {
             // Tạo container cho loading indicator
             HBox loadingContainer = new HBox();
             loadingContainer.setAlignment(javafx.geometry.Pos.CENTER);
+            loadingContainer.getStyleClass().add("container");
             
             // Đặt kích thước container dựa vào loại card
             switch (type) {
@@ -76,6 +79,7 @@ public class BookCardCell extends ListCell<Book> {
                     try {
                         bookCard = loader.load();
                         controller = loader.getController();
+                        bookCard.getStyleClass().add("container");
 
                         // Load book data
                         controller.setData(book);
