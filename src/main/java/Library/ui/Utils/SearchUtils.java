@@ -96,7 +96,7 @@ public interface SearchUtils {
 
     /* ---------- HÀM TÌM KIẾM ---------- */
     private List<Book> getSearchList(String q) {
-        if (q == null || q.trim().isEmpty()) return Collections.emptyList();
+//        if (q == null || q.trim().isEmpty()) return Collections.emptyList();
         return Book.searchBooksValue(q);
     }
 }
