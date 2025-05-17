@@ -3,7 +3,7 @@
 UETLibz là ứng dụng quản lý thư viện số được phát triển cho trường Đại học Công nghệ - Đại học Quốc gia Hà Nội. Ứng dụng được xây dựng bằng JavaFX với giao diện người dùng hiện đại và thân thiện.
 
 ## Video demo
-[![Watch the video](![img.png](img.png))](https://youtu.be/pIQ7TBqDrws)
+File `video_demo.mp4` hoặc Youtube: https://youtu.be/pIQ7TBqDrws
 
 
 ## Cấu trúc ứng dụng
