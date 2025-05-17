@@ -101,16 +101,7 @@ public class UserManageController extends AdminTabController implements Initiali
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         hideButtons();
-        List<User> users = MemberDAOImpl.getInstance().DisplayMembers();
-        UserList = FXCollections.observableArrayList(users);
-        UserName.setCellValueFactory(new PropertyValueFactory<User, String>("userName"));
-        Email.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
-        Phone.setCellValueFactory(new PropertyValueFactory<User, String>("phone"));
-        ID.setCellValueFactory(cellData -> {
-            int index = UserList.indexOf(cellData.getValue());
-            return new SimpleIntegerProperty(index + 1).asObject();
-        });
-        table.setItems(UserList);
+        refreshData();
     }
 
     public void refreshData() {

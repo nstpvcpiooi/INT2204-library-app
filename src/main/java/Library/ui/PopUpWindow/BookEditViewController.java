@@ -67,8 +67,7 @@ public class BookEditViewController extends PopUpController {
             );
             // Cập nhật giao diện
             setData(selectedBook);  // Gọi lại setData để làm mới giao diện
-            ((AdminMainController) getPopUpWindow().getMainController()).libraryManageController.updateBookInList(selectedBook);
-
+            ((AdminMainController) getPopUpWindow().getMainController()).libraryManageController.getSearchResult().refresh();
             getPopUpWindow().close();  // Đóng cửa sổ popup
 
             // Hiển thị thông báo thành công

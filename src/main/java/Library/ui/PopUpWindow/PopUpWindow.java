@@ -132,7 +132,6 @@ public class PopUpWindow {
 
     public void displayAdd(ListView<Book> SearchResult) {
         PopUpStage.setScene(bookAddScene);
-        customAddController.setSearchResult(SearchResult);
         mainController.setBackgroundEffect();
         PopUpStage.show();
     }

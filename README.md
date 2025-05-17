@@ -2,24 +2,15 @@
 
 UETLibz là ứng dụng quản lý thư viện số được phát triển cho trường Đại học Công nghệ - Đại học Quốc gia Hà Nội. Ứng dụng được xây dựng bằng JavaFX với giao diện người dùng hiện đại và thân thiện.
 
+## Video demo
+Video nằm trong đuờng dẫn: `src/main/resources/video_demo.mp4`
+Link trên Youtube: [Link][https://youtu.be/pIQ7TBqDrws]
+
+
 ## Cấu trúc ứng dụng
 
 Ứng dụng được tổ chức theo mô hình MVC (Model-View-Controller) với các thành phần chính:
 
-### Backend
-- `Library.backend`: Chứa các model và logic xử lý dữ liệu
-  - `Login.Model`: Quản lý thông tin người dùng và xác thực
-  - `bookModel`: Quản lý thông tin sách
-  - `Request`: Xử lý các yêu cầu mượn/trả sách
-  - `Session`: Quản lý phiên đăng nhập
-
-### Frontend
-- `Library.ui`: Chứa các giao diện người dùng
-  - `Admin`: Giao diện dành cho quản trị viên
-  - `User`: Giao diện dành cho người dùng
-  - `LogIn`: Giao diện đăng nhập
-  - `PopUpWindow`: Các cửa sổ popup
-  - `Utils`: Các tiện ích giao diện
 
 ## Tính năng chính
 
@@ -66,6 +57,8 @@ JavaFX, MySQL
 
 ## Cài đặt và chạy
 1. Clone repository
-2. Cấu hình database trong file `src/main/resources/database.properties`
+2. Cài đặt XAMPP và bật Apache & MySQL. 
+3. Sử dùng MySQL WorkBenche hoặc Vào mục Database có sẵn trong IntelliJ IDEA > New > Data Source > MySQL > Nhập thông tin kết nối đến database (Host: localhost, Port: 3306, User: root, Password: không có). > Test kết nối bằng cách nhấn Test Connection, nếu thành công sẽ có thông báo "Connection successful". > OK
+4. Cấu hình database trong file `src/main/resources/database.sql`. Import dữ liệu các đầu sách trong thư viện trong file `src/main/resources/sach.csv`. Import dữ liệu người dùng trong file `src/main/resources/members.csv`.
 3. Chạy lệnh `mvn clean javafx:run`
 

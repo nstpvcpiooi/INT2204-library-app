@@ -39,6 +39,10 @@ public class LibraryManageController extends AdminTabController implements Initi
     @FXML
     private HBox SearchBar;
 
+    public ListView<Book> getSearchResult() {
+        return SearchResult;
+    }
+
     /**
      * Danh sách kết quả tìm kiếm
      */

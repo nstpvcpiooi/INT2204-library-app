@@ -2,6 +2,7 @@ package Library.ui.PopUpWindow;
 
 import Library.backend.bookDao.MysqlBookDao;
 import Library.backend.bookModel.Book;
+import Library.ui.Admin.AdminMainController;
 import Library.ui.Utils.Notification;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,8 +24,6 @@ public class CustomAddController extends PopUpController {
 
     @FXML
     private Button saveButton, backButton;
-
-    private ListView<Book> SearchResult;
 
     /**
      * Hàm xử lý sự kiện khi nhấn vào nút lưu thông tin sách
@@ -62,7 +61,7 @@ public class CustomAddController extends PopUpController {
             // Lưu sách vào cơ sở dữ liệu
             MysqlBookDao bookDao = MysqlBookDao.getInstance();
             bookDao.addBook(newBook);
-            SearchResult.getItems().add(0, newBook);
+            ((AdminMainController) getPopUpWindow().getMainController()).libraryManageController.getSearchResult().getItems().add(0, newBook);
 
             // Đóng popup và hiển thị thông báo thành công
             getPopUpWindow().close();
@@ -174,9 +173,5 @@ public class CustomAddController extends PopUpController {
     private void showNotification(String title, String message) {
         Notification notification = new Notification(title, message);
         notification.display();
-    }
-
-    public void setSearchResult(ListView<Book> searchResult) {
-        SearchResult = searchResult;
     }
 }
