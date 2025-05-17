@@ -6,7 +6,6 @@ import java.sql.SQLException;
 public class JDBCUtil {
     public static Connection getConnection() {
         Connection c = null;
-        //	com.mysql.cj.jdbc.Driver driver = new com.mysql.cj.jdbc.Driver();
         try {
             // đăng ký mysql driver vơi drivermanager
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
