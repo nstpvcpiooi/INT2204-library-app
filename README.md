@@ -61,5 +61,6 @@ Javafx + SceneBuilder, MySQL Workbench, XAMPP, IntelliJ IDEA
 4. Cấu hình database trong file `src/main/resources/database.sql`. Import dữ liệu các đầu sách trong thư viện trong file `src/main/resources/sach.csv`. Import dữ liệu người dùng trong file `src/main/resources/members.csv`.
 
 
-5. Chạy Application hoặc dùng terminal `mvn clean javafx:run` 
+5. Trong IntelliJ IDEA, vào File > Project Structures > Libraries > New Project Library > Java > chọn thư mục `/lib`.
+6. Chạy Application hoặc dùng terminal `mvn clean javafx:run` 
 
