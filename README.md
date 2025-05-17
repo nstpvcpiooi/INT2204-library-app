@@ -56,6 +56,7 @@ Javafx + SceneBuilder, MySQL Workbench, XAMPP, IntelliJ IDEA
    - New > Data Source > MySQL
    - Nhập thông tin kết nối đến database (Host: `localhost`, Port: `3306`, User: `root`, Password: `không có`).
    - Test kết nối bằng cách nhấn Test Connection, nếu thành công sẽ có thông báo "Connection successful". > OK
+   - Mở console và `CREAT DATABASE library`
    
 4. Cấu hình database trong file `src/main/resources/database.sql`. Import dữ liệu các đầu sách trong thư viện trong file `src/main/resources/sach.csv`. Import dữ liệu người dùng trong file `src/main/resources/members.csv`.
 
