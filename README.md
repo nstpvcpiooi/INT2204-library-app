@@ -4,7 +4,7 @@ UETLibz là ứng dụng quản lý thư viện số được phát triển cho 
 
 ## Video demo
 Video nằm trong đuờng dẫn: `src/main/resources/video_demo.mp4`
-Link trên Youtube: [Link][https://youtu.be/pIQ7TBqDrws]
+Link trên Youtube: https://youtu.be/pIQ7TBqDrws
 
 
 ## Cấu trúc ứng dụng
