@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="210.0" fitWidth="950.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../image/peakpx.jpg" />
+            <Image url="@../../image/peakpx.png" />
          </image>
       </ImageView>
       <VBox id="welcome" fx:id="welcomeBox" alignment="CENTER" layoutX="73.0" layoutY="94.0" prefHeight="210.0" prefWidth="804.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.28571428571422" AnchorPane.topAnchor="94.0">

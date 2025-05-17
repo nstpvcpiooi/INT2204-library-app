@@ -7,6 +7,7 @@ import Library.ui.MainController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -129,8 +130,9 @@ public class PopUpWindow {
         PopUpStage.show();
     }
 
-    public void displayAdd() {
+    public void displayAdd(ListView<Book> SearchResult) {
         PopUpStage.setScene(bookAddScene);
+        customAddController.setSearchResult(SearchResult);
         mainController.setBackgroundEffect();
         PopUpStage.show();
     }

@@ -74,7 +74,7 @@
                         <Image url="@../icon/apps.png" />
                      </image>
                   </ImageView>
-                  <Label contentDisplay="CENTER" graphicTextGap="0.0" opacity="0.8" prefHeight="24.0" prefWidth="152.0" text="Sách đã mượn" />
+                  <Label contentDisplay="CENTER" graphicTextGap="0.0" opacity="0.8" prefHeight="24.0" prefWidth="152.0" text="Sách đang mượn" />
                </children>
                <padding>
                   <Insets left="20.0" />

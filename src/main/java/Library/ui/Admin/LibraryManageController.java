@@ -57,7 +57,7 @@ public class LibraryManageController extends AdminTabController implements Initi
      */
     @FXML
     void AddBook(MouseEvent event) {
-        getMainController().getPopUpWindow().displayAdd();
+        getMainController().getPopUpWindow().displayAdd(SearchResult);
     }
 
     /**
@@ -83,6 +83,7 @@ public class LibraryManageController extends AdminTabController implements Initi
      */
     public void removeBook(Book book) {
         bookList.remove(book);
+        SearchResult.getItems().remove(book);
     }
 
     /**
