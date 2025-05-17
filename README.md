@@ -55,7 +55,8 @@ UETLibz là ứng dụng quản lý thư viện số được phát triển cho 
    - Xem lịch sử mượn/trả
    - Gửi thông báo cho người dùng
 
-## Công nghệ sử dụng: JavaFX, MySQL
+## Công nghệ sử dụng:
+JavaFX, MySQL
 
 ## Yêu cầu hệ thống
 - Java 17 trở lên
