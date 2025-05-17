@@ -16,18 +16,17 @@ File `video_demo.mp4` hoặc Youtube: https://youtu.be/pIQ7TBqDrws
 ### Cho người dùng
 1. **Đăng nhập**
    - Đăng nhập bằng tài khoản
-   - Đăng ký tài khoản mới
    - Quản lý thông tin cá nhân
 
 2. **Tìm kiếm sách**
-   - Tìm kiếm theo tên, tác giả, thể loại
+   - Tìm kiếm theo tên
    - Xem chi tiết thông tin sách
-   - Lọc kết quả tìm kiếm
 
 3. **Quản lý yêu cầu mượn sách**
    - Gửi yêu cầu mượn sách
+   - Gửi yêu cầu trả sách
    - Xem trạng thái yêu cầu
-   - Xem lịch sử mượn/trả sách
+   - Xem danh sách đang mượn
 
 ### Cho quản trị viên
 1. **Quản lý thư viện**
@@ -37,27 +36,19 @@ File `video_demo.mp4` hoặc Youtube: https://youtu.be/pIQ7TBqDrws
 
 2. **Quản lý người dùng**
    - Xem danh sách người dùng
-   - Quản lý quyền truy cập
-   - Khóa/mở khóa tài khoản
+   - Chỉnh sửa thông tin người dùng
+   - Xóa người dùng
 
 3. **Quản lý yêu cầu**
-   - Duyệt/từ chối yêu cầu mượn sách
-   - Xem lịch sử mượn/trả
-   - Gửi thông báo cho người dùng
+   - Duyệt yêu cầu mượn sách, trả sách
+   - Xem lịch sử yêu cầu mượn/trả
 
-## Công nghệ sử dụng:
-JavaFX, MySQL
-
-## Yêu cầu hệ thống
-- Java 17 trở lên
-- MySQL Server
-- XAMPP
-- Maven
+## Công cụ sử dụng: Javafx + SceneBuilder, MySQL Workbench, XAMPP, IntelliJ IDEA
 
 ## Cài đặt và chạy
 1. Clone repository
 2. Cài đặt XAMPP và bật Apache & MySQL. 
 3. Sử dùng MySQL WorkBenche hoặc Vào mục Database có sẵn trong IntelliJ IDEA > New > Data Source > MySQL > Nhập thông tin kết nối đến database (Host: localhost, Port: 3306, User: root, Password: không có). > Test kết nối bằng cách nhấn Test Connection, nếu thành công sẽ có thông báo "Connection successful". > OK
 4. Cấu hình database trong file `src/main/resources/database.sql`. Import dữ liệu các đầu sách trong thư viện trong file `src/main/resources/sach.csv`. Import dữ liệu người dùng trong file `src/main/resources/members.csv`.
-3. Chạy lệnh `mvn clean javafx:run`
+3. Chạy Application hoặc dùng terminal `mvn clean javafx:run` 
 
