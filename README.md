@@ -43,7 +43,9 @@ File `video_demo.mp4` hoặc Youtube: https://youtu.be/pIQ7TBqDrws
    - Duyệt yêu cầu mượn sách, trả sách
    - Xem lịch sử yêu cầu mượn/trả
 
-## Công cụ sử dụng: Javafx + SceneBuilder, MySQL Workbench, XAMPP, IntelliJ IDEA
+## Công cụ sử dụng: 
+
+Javafx + SceneBuilder, MySQL Workbench, XAMPP, IntelliJ IDEA
 
 ## Cài đặt và chạy
 1. Clone repository
