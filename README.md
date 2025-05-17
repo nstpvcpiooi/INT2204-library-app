@@ -49,8 +49,16 @@ Javafx + SceneBuilder, MySQL Workbench, XAMPP, IntelliJ IDEA
 
 ## Cài đặt và chạy
 1. Clone repository
-2. Cài đặt XAMPP và bật Apache & MySQL. 
-3. Sử dùng MySQL WorkBenche hoặc Vào mục Database có sẵn trong IntelliJ IDEA > New > Data Source > MySQL > Nhập thông tin kết nối đến database (Host: localhost, Port: 3306, User: root, Password: không có). > Test kết nối bằng cách nhấn Test Connection, nếu thành công sẽ có thông báo "Connection successful". > OK
+
+2. Cài đặt XAMPP và bật Apache & MySQL.
+   
+3. Sử dùng MySQL WorkBenche hoặc Vào mục Database có sẵn trong IntelliJ IDEA và thực hiện các bước sau:
+   - New > Data Source > MySQL
+   - Nhập thông tin kết nối đến database (Host: `localhost`, Port: `3306`, User: `root`, Password: `không có`).
+   - Test kết nối bằng cách nhấn Test Connection, nếu thành công sẽ có thông báo "Connection successful". > OK
+   
 4. Cấu hình database trong file `src/main/resources/database.sql`. Import dữ liệu các đầu sách trong thư viện trong file `src/main/resources/sach.csv`. Import dữ liệu người dùng trong file `src/main/resources/members.csv`.
-3. Chạy Application hoặc dùng terminal `mvn clean javafx:run` 
+
+
+5. Chạy Application hoặc dùng terminal `mvn clean javafx:run` 
 
